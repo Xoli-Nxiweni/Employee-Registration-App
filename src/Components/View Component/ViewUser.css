@@ -1,0 +1,88 @@
+.functions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 5%;
+}
+.searchBar{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* background: #ff4040; */
+    padding: 20px 0;
+}
+.searchBar input{
+    width: 540px;
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-radius: 15px;
+}
+.searchBar svg{
+    font-size: 25px;
+}
+.searchBtn{
+    background: #00000000;
+    border: none;
+    cursor: pointer;
+}
+.searchBtn:hover{
+    background: #00000000;
+}
+.addBtn{
+    background: #395d2c;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    transition: all .2s linear;
+    cursor: pointer;
+}
+.addBtn:hover{
+    background: #47912c;
+}
+.functions svg{
+    color: #ffffff;
+    font-size: 45px;
+}
+.table{
+    margin: 0 5%;
+    background: #d9d9d9;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    height: 70vh;
+}
+.editBtn{
+    padding: 7px;
+    text-transform: uppercase;
+    margin: 5px;
+    background: #47912c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+.deleteBtn{
+    padding: 7px;
+    text-transform: uppercase;
+    margin: 5px;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+table{
+    width: 100%;
+    border: 1px solid ;
+}
+th{
+    position: sticky;
+    top: 0;
+    background: grey;
+}
+tr{
+    text-align: center;
+    border-bottom: 1px solid;
+}

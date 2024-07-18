@@ -1,0 +1,41 @@
+.NavBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #bdcbd8;
+    padding: 20px 5%;
+}
+.logo img{
+    width: 100px;
+}
+.Links{
+    display: flex;
+    gap: 30px;
+}
+.Links li{
+    list-style: none;
+}
+.Links li a{
+    text-decoration: none;
+    color: #000;
+    transition: all .2s linear;
+    font-size: 1.4em;
+}
+.Links li a:hover{
+    color: #6e6e6e;
+}
+.navBtn button{
+    background: #D9d9d9;
+    outline: none;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all .2s linear;
+}
+.navBtn button:hover{
+    background: #9c9c9c;
+    color: #FFF;
+}
