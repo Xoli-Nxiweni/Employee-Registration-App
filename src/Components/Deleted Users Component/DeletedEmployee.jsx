@@ -1,18 +1,45 @@
 import { useState, useEffect } from 'react';
-import './DeletedUsers.css'; // Add your styles
+import './DeletedEmployee.css';
 
 const DeletedUser = () => {
     const [deletedUsers, setDeletedUsers] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('deletedUsers')) || [];
         setDeletedUsers(data);
+        setFilteredData(data); // Initialize filtered data with the full dataset
     }, []);
+
+    useEffect(() => {
+        if (searchTerm) {
+            const filtered = deletedUsers.filter(user =>
+                user.ID.toString().includes(searchTerm) // Convert ID to string and filter
+            );
+            setFilteredData(filtered);
+        } else {
+            setFilteredData(deletedUsers);
+        }
+    }, [searchTerm, deletedUsers]);
+
+    const handleSearchChange = (event) => {
+        const value = event.target.value;
+        setSearchTerm(value);
+    };
 
     return (
         <div className="DeletedUser">
+            <div className='searchBar bar2'>
+                <input 
+                    type="text" 
+                    placeholder="Search by ID" 
+                    value={searchTerm} 
+                    onChange={handleSearchChange} 
+                />
+            </div>
             <div className="table">
-                <h1>Deleted Employees</h1>
+                <h1>Removed Employees</h1>
                 <table>
                     <thead>
                         <tr>
@@ -25,9 +52,11 @@ const DeletedUser = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {deletedUsers.map((user, index) => (
+                        {filteredData.map((user, index) => (
                             <tr key={index}>
-                                <td><img src={user.imagePreview || "default-image.png"} alt="User" /></td>
+                                <td>
+                                    <img src={user.imagePreview || "default-image.png"} alt="User" />
+                                </td>
                                 <td>{user.names}</td>
                                 <td>{user.email}</td>
                                 <td>{user.phoneNo}</td>

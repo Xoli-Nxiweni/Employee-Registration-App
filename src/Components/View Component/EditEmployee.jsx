@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import './EditUser.css'; // Add your styles
+import './EditEmployee.css';
 
+// eslint-disable-next-line react/prop-types
 const EditUser = ({ user, onSave, onCancel }) => {
     const [formData, setFormData] = useState(user);
 

@@ -13,7 +13,7 @@
 }
 
 .editUserModal {
-    background: #fff;
+    background: #d9d9d9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -34,11 +34,15 @@
 .inputContainer2 input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
     border: none;
     outline: none;
+    border-bottom: 2px solid transparent;
+    background: #a7a7a7;
+}
+.inputContainer2 input:focus {
+    border-bottom: 2px solid #47912c;
 }
 
 .formActions {
@@ -57,19 +61,19 @@
 }
 
 .formActions button[type="submit"] {
-    background-color: #007bff;
+    background-color: #47912c;
     color: #fff;
 }
 
 .formActions button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #47912c;
 }
 
 .formActions button[type="button"] {
-    background-color: #6c757d;
+    background-color: #ff0000;
     color: #fff;
 }
 
 .formActions button[type="button"]:hover {
-    background-color: #5a6268;
+    background-color: #ff0000;
 }
