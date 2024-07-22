@@ -3,11 +3,11 @@ import './Landing.css';
 // eslint-disable-next-line react/prop-types
 const Landing = ({ onLogout, showLogout, onNavClick, activeLink }) => {
 
-  const logo = `< X O_ / >`;
+  const logo = `https://car-brand-names.com/wp-content/uploads/2016/01/Volkswagen-Logo-1948.png`;
   return (
     <div className='NavBar'>
       <div className="logo">
-        <h1>{logo}</h1>
+        <img src={logo} alt="" />
       </div>
       <ul className='Links'>
         <li>
@@ -23,7 +23,7 @@ const Landing = ({ onLogout, showLogout, onNavClick, activeLink }) => {
             className={activeLink === 'viewEmployees' ? 'active' : ''} 
             onClick={() => onNavClick('viewEmployees')}
           >
-            View Active Employees
+            Active Employees
           </a>
         </li>
         <li>
@@ -31,7 +31,7 @@ const Landing = ({ onLogout, showLogout, onNavClick, activeLink }) => {
             className={activeLink === 'viewDeletedEmployees' ? 'active' : ''} 
             onClick={() => onNavClick('viewDeletedEmployees')}
           >
-            View Removed Employees
+            Removed Employees
           </a>
         </li>
       </ul>

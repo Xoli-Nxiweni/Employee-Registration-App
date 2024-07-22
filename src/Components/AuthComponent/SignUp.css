@@ -14,18 +14,17 @@
     text-align: center;
 }
 .signUp h1{
-    text-decoration: underline;
     text-transform: uppercase;
 }
 .signUpForm{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 .signUpForm input{
     background: #afafaf;
     padding: 10px;
-    width: 320px;
+    width: 340px;
     border-radius: 5px;
     border: none;
     border-bottom: 2px solid transparent;
@@ -53,4 +52,15 @@
     background: transparent;
     border: 2px solid #626262;
     color: #626262;
+}
+
+@media (max-width: 475px) {
+    .signUp{
+        padding: unset;
+        width: 80%;
+        padding: 20px;
+    }
+    .signUpForm input{
+        width: 100%;
+    }
 }

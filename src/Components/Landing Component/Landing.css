@@ -8,10 +8,13 @@
     width: 100%;
     z-index: 99;
 }
-.logo h1{
-    color: #9c9c9c;
-    font-size: 2em;
-    font-weight: 750;
+.logo{
+    border-radius: 50%;
+    
+}
+.logo img{
+    width: 120px;
+    object-fit: contain;
 }
 .Links{
     display: flex;
@@ -28,6 +31,7 @@
     font-size: .9em;
     height: 100%;
     text-transform: uppercase;
+    padding: 4px 0;
 }
 .Links li a:hover{
     color: #cecece;
@@ -49,10 +53,10 @@
 }
   .NavBar .Links a.active {
     color:#fff;
-    border-bottom: 1px solid;
+    border-bottom: 2px solid;
   }
 
-  @media (max-width:772px) {
+  @media (max-width:854px) {
     .Links{
         display: flex;
         position: fixed;
@@ -113,15 +117,14 @@
         align-items: center;
         font-size: .7em;
     }
-    .logo h1{
-        font-size: 1.4em;
-        font-weight: 750;
+    .logo img{
+        width: 90px;
     }
     .navBtn button{
         font-size: .7em;
         font-weight: 600;
-        width: 80px;
-        height: 30px;
+        width: 90px;
+        height: 50px;
     }
     .NavBar .Links a.active {
         color:#fff;

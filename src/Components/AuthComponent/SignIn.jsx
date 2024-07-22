@@ -1,11 +1,20 @@
+import React, { useState } from 'react';
 import './SignIn.css';
 
 // eslint-disable-next-line react/prop-types
 const SignIn = ({ onSignIn, onRegisterClick }) => {
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [errors, setErrors] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
+    const { username, password } = formData;
+
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
 
     // Retrieve stored credentials from localStorage
     const storedCredentials = JSON.parse(localStorage.getItem('userCredentials'));
@@ -13,8 +22,23 @@ const SignIn = ({ onSignIn, onRegisterClick }) => {
     if (storedCredentials && storedCredentials.username === username && storedCredentials.password === password) {
       onSignIn();
     } else {
-      alert("Invalid username or password");
+      alert('Invalid username or password');
     }
+  };
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!formData.username) formErrors.username = 'Username is required****';
+    if (!formData.password) formErrors.password = 'Password is required****';
+    return formErrors;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
@@ -22,8 +46,22 @@ const SignIn = ({ onSignIn, onRegisterClick }) => {
       <div className="signIn">
         <h1>Sign In</h1>
         <form onSubmit={handleSubmit} className='signInForm'>
-          <input type="text" name="username" placeholder='username' required />
-          <input type="password" name="password" placeholder='password' required />
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder='Username'
+          />
+          {errors.username && <p className='error'>{errors.username}</p>}
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder='Password'
+          />
+          {errors.password && <p className='error'>{errors.password}</p>}
           <button type="submit">Sign In</button>
           <p>No Account? Register <span onClick={onRegisterClick}>Here</span></p>
         </form>
@@ -33,4 +71,3 @@ const SignIn = ({ onSignIn, onRegisterClick }) => {
 };
 
 export default SignIn;
-

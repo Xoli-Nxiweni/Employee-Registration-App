@@ -14,13 +14,12 @@
     text-align: center;
 }
 .signIn h1{
-    text-decoration: underline;
     text-transform: uppercase;
 }
 .signInForm{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 .signInForm input{
     background: #afafaf;
@@ -54,4 +53,15 @@ span{
     color: purple;
     text-decoration: underline;
     cursor: pointer;
+}
+
+@media (max-width: 475px) {
+    .signIn{
+        padding: unset;
+        width: 80%;
+        padding: 20px;
+    }
+    .signInForm input{
+        width: 100%;
+    }
 }

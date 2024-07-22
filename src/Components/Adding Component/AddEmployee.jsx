@@ -51,10 +51,18 @@ const AddUser = ({ onBack }) => {
 
     const validateForm = () => {
         let formErrors = {};
-        if (!formData.names) formErrors.names = 'Name is required';
-        if (!formData.email) formErrors.email = 'Email is required';
-        if (!formData.phoneNo) formErrors.phoneNo = 'Phone number is required';
-        if (!formData.position) formErrors.position = 'Position is required';
+        if (!formData.names) formErrors.names = 'Name is required***';
+        if (!formData.email) {
+            formErrors.email = 'Email is required***';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            formErrors.email = 'Email is invalid***';
+        }
+        if (!formData.phoneNo) {
+            formErrors.phoneNo = 'Phone number is required***';
+        } else if (formData.phoneNo.length !== 10) {
+            formErrors.phoneNo = 'Phone number must be 10 digits***';
+        }
+        if (!formData.position) formErrors.position = 'Position is required***';
         return formErrors;
     };
 
@@ -72,7 +80,7 @@ const AddUser = ({ onBack }) => {
         const newUserData = {
             ...formData,
             ID: newID,
-            imagePreview: imagePreview // Use resized image data
+            imagePreview: imagePreview
         };
 
         const existingData = JSON.parse(localStorage.getItem('userData')) || [];
@@ -103,8 +111,8 @@ const AddUser = ({ onBack }) => {
         if (showPopup) {
             const timer = setTimeout(() => {
                 setShowPopup(false);
-                onBack(); // Call onBack after hiding the popup
-            }, 3000); // Close after 3 seconds
+                onBack(); 
+            }, 3000); 
 
             return () => clearTimeout(timer);
         }
@@ -159,7 +167,7 @@ const AddUser = ({ onBack }) => {
                             {imagePreview && <img src={imagePreview} alt="Preview" />}
                         </div>
                         <label htmlFor="image" className="uploadLabel">Upload Image</label>
-                        <input type="file" id="image" onChange={handleImageChange} />
+                        <input type="file" id="image" onChange={handleImageChange} required/>
                     </div>
                     <div className="addingBtn">
                         <button type="submit">ADD +</button>
