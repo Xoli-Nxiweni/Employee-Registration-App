@@ -13,7 +13,6 @@
   .modal-content {
     background-color: #bbbbbb;
     padding: 40px;
-    border-radius: 10px;
     max-width: 450px;
     position: relative;
     display: flex;
@@ -24,7 +23,6 @@
   }
   .modal-content img {
     padding: 10px 0;
-    border-radius: 20px;
     height: 250px;
     object-fit: cover;
   }
