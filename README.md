@@ -35,7 +35,7 @@ The Employee Management System is a web application built with React.js and CSS.
 ### Installation
 
 1. *Clone the repository*:
-   git clone https://github.com/your-username/employee-management-system.git
+   git clone https://github.com/Xoli-Nxiweni/Employee-Registration-App.git
    cd employee-management-system
 
 2. *Install dependencies and run the project*:
