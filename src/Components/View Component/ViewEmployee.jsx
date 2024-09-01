@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MdAdd } from "react-icons/md";
 import EditUser from './EditEmployee';
 import UserModal from './EmployeeModal';
+import PopupAlert from '../Alerts/PopUpAlert';
 import './ViewEmployee.css';
 
 // eslint-disable-next-line react/prop-types
@@ -11,6 +12,7 @@ const ViewUser = ({ onAddUserClick }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [editUser, setEditUser] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
 
     const fetchData = () => {
         const data = JSON.parse(localStorage.getItem('userData')) || [];
@@ -59,6 +61,12 @@ const ViewUser = ({ onAddUserClick }) => {
         const deletedUsers = JSON.parse(localStorage.getItem('deletedUsers')) || [];
         deletedUsers.push(deletedUser);
         localStorage.setItem('deletedUsers', JSON.stringify(deletedUsers));
+
+        // Show the popup alert
+        setShowPopup(true);
+        setTimeout(() => {
+            setShowPopup(false);
+        }, 3000);
     };
 
     const handleEdit = (user) => {
@@ -135,6 +143,7 @@ const ViewUser = ({ onAddUserClick }) => {
             </div>
             {editUser && <EditUser user={editUser} onSave={handleSave} onCancel={handleCancel} />}
             {selectedUser && <UserModal user={selectedUser} onClose={closeModal} />}
+            {showPopup && <PopupAlert message="Employee has been deleted" onClose={() => setShowPopup(false)} />}
         </div>
     );
 };

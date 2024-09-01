@@ -3,7 +3,7 @@ import './Landing.css';
 // eslint-disable-next-line react/prop-types
 const Landing = ({ onLogout, showLogout, onNavClick, activeLink }) => {
 
-  const logo = `https://car-brand-names.com/wp-content/uploads/2016/01/Volkswagen-Logo-1948.png`;
+  const logo = `https://assets-global.website-files.com/64933e2f73e6774e4cfe37a6/64933e2f73e6774e4cfe37b9_Logos-fake-mock-up-illust-ss143531671-2.png`;
   return (
     <div className='NavBar'>
       <div className="logo">

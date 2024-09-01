@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './SignIn.css';
 
 // eslint-disable-next-line react/prop-types
 const SignIn = ({ onSignIn, onRegisterClick }) => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    // Check if the user is already signed in
+    const isSignedIn = localStorage.getItem('isSignedIn');
+    if (isSignedIn === 'true') {
+      onSignIn();
+    }
+  }, [onSignIn]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,10 +24,9 @@ const SignIn = ({ onSignIn, onRegisterClick }) => {
       return;
     }
 
-    // Retrieve stored credentials from localStorage
-    const storedCredentials = JSON.parse(localStorage.getItem('userCredentials'));
-
-    if (storedCredentials && storedCredentials.username === username && storedCredentials.password === password) {
+    // Directly compare the formData with the hardcoded credentials
+    if (username === 'admin' && password === 'admin123') {
+      localStorage.setItem('isSignedIn', 'true'); // Persist sign-in status
       onSignIn();
     } else {
       alert('Invalid username or password');

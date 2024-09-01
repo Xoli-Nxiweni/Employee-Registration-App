@@ -6,28 +6,41 @@ import SignUp from './Components/AuthComponent/SignUp';
 import SignIn from './Components/AuthComponent/SignIn';
 import AddUser from './Components/Adding Component/AddEmployee';
 import ViewDeletedUsers from './Components/Deleted Users Component/DeletedEmployee';
+import Loader from './Components/Loader/Loader';
 
-let App = () =>{
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [activeComponent, setActiveComponent] = useState('viewEmployees');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const userCredentials = localStorage.getItem('userCredentials');
-    setIsLoggedIn(userCredentials ? true : false);
+    // Check if the user is already signed in
+    const isSignedIn = localStorage.getItem('isSignedIn');
+    setIsLoggedIn(isSignedIn === 'true');
   }, []);
 
-  const LoggingIn = () => {
-    setIsLoggedIn(true);
+  const handleSignIn = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoggedIn(true);
+      localStorage.setItem('isSignedIn', 'true'); // Persist sign-in status
+      setIsLoading(false);
+    }, 2000); // Simulate an API call delay
+  };
+
+  const handleLogout = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoggedIn(false);
+      setActiveComponent('viewEmployees');
+      localStorage.setItem('isSignedIn', 'false'); // Clear sign-in status
+      setIsLoading(false);
+    }, 1000); // Simulate an API call delay
   };
 
   const handleNavClick = (component) => {
     setActiveComponent(component);
-  }
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setActiveComponent('viewEmployees');
   };
 
   const handleRegisterClick = () => {
@@ -53,6 +66,7 @@ let App = () =>{
 
   return (
     <>
+      {isLoading && <Loader />}
       <nav>
         <Landing 
           onLogout={handleLogout} 
@@ -66,16 +80,16 @@ let App = () =>{
           showSignUp ? (
             <SignUp onSignInClick={handleSignInClick} />
           ) : (
-            <SignIn onSignIn={LoggingIn} onRegisterClick={handleRegisterClick} />
+            <SignIn onSignIn={handleSignIn} onRegisterClick={handleRegisterClick} />
           )
         ) : (
           <div>
-            {isLoggedIn && renderComponent()}
+            {renderComponent()}
           </div>
         )}
       </main>
     </>
   );
-}
+};
 
 export default App;
