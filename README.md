@@ -44,19 +44,20 @@ The Employee Management System is a web application built with React.js and CSS.
    npm run dev
 
 3. *Access the application*:
-   - Open your browser and navigate to `http://localhost:3000`.
+   - Open your browser and navigate to `http://localhost:5173`.
    - Check the PDF file that contains designs of the web application.
 
 ### Project Structure
 ## Usage
 
-1. *Sign Up*: Create a new account.
-2. *Sign In*: Log in with your credentials.
-3. *Dashboard*: View and manage employee records.
-4. *Add Employee*: Fill out the form and submit to add a new employee.
-5. *Edit Employee*: Click the edit button on an employee row to update their information.
-6. *Delete Employee*: Click the delete button to remove an employee from the active list.
-7. *View Employee*: Click on an employee row to view detailed information in a modal.
+1. *Sign In*: Log in with the following credentials:
+   -username: admin
+   -password: admin123
+2. *Dashboard*: View and manage employee records.
+3. *Add Employee*: Fill out the form and submit to add a new employee.
+4. *Edit Employee*: Click the edit button on an employee row to update their information.
+5. *Delete Employee*: Click the delete button to remove an employee from the active list.
+6. *View Employee*: Click on an employee row to view detailed information in a modal.
 
 ## Contributing
 
